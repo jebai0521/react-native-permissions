@@ -51,6 +51,9 @@ typedef NS_ENUM(NSInteger, RNPermission) {
 #if __has_include("RNPermissionHandlerAppTrackingTransparency.h")
   RNPermissionAppTrackingTransparency = 16,
 #endif
+#if __has_include("RNPermissionHandlerLocationFullAccuracy.h")
+  RNPermissionLocationFullAccuracy = 17,
+#endif
 };
 
 @interface RCTConvert (RNPermission)
@@ -76,7 +79,8 @@ typedef enum {
                  rejecter:(void (^ _Nonnull)(NSError * _Nonnull error))reject;
 
 - (void)requestWithResolver:(void (^ _Nonnull)(RNPermissionStatus status))resolve
-                   rejecter:(void (^ _Nonnull)(NSError * _Nonnull error))reject;
+                   rejecter:(void (^ _Nonnull)(NSError * _Nonnull error))reject
+                   options:(NSDictionary *_Nullable)options;
 
 @end
 
